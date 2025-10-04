@@ -23,106 +23,27 @@ namespace FirstWPFProject
 
         private void TextBox_TextChanged_Distance(object sender, TextChangedEventArgs e)
         {
-            distance_error.Text = "";
-            try
-            {
-                double distance_value = Double.Parse(distance.Text);
-                if (distance_value <= 0) {
-                    distance_error.Text = "Distance must be > 0";
-                }
-                if (distance_value > 1000)
-                {
-                    distance_error.Text = "Distance must be <= 1000";
-                }
-            }
-            catch (FormatException ex)
-            {
-                distance_error.Text = "Distance can't be empty or text";
-            }
+            ValidateInput(distance, distance_error, 0.0, 1000.0, "Distance");
         }
 
         private void TextBox_TextChanged_Tariff(object sender, TextChangedEventArgs e)
         {
-            tariff_error.Text = "";
-            try
-            {
-                double tariff_value = Double.Parse(tariff.Text);
-                if (tariff_value < 0)
-                {
-                    tariff_error.Text = "Tariff must be >= 0";
-                }
-                if (tariff_value > 100)
-                {
-                    tariff_error.Text = "Distance must be <= 100";
-                }
-            }
-            catch (FormatException ex)
-            {
-                tariff_error.Text = "Tariff can't be empty or text";
-            }
+            ValidateInput(tariff, tariff_error, 0.0, 100.0, "Tariff", false);
         }
 
         private void TextBox_TextChanged_Basic_Price(object sender, TextChangedEventArgs e)
         {
-            price_error.Text = "";
-            try
-            {
-                double price_value = Double.Parse(basic_price.Text);
-                if (price_value < 0)
-                {
-                    price_error.Text = "Price must be >= 0";
-                }
-                if (price_value > 100)
-                {
-                    price_error.Text = "Price must be <= 100";
-                }
-            }
-            catch (FormatException ex)
-            {
-                price_error.Text = "Price can't be empty or text";
-            }
+            ValidateInput(basic_price, price_error, 0.0, 100.0, "Price", false);
         }
 
         private void TextBox_TextChanged_Waiting_Time(object sender, TextChangedEventArgs e)
         {
-            time_error.Text = "";
-            try
-            {
-                double time_value = Double.Parse(waiting_time.Text);
-                if (time_value <= 0)
-                {
-                    time_error.Text = "Time must be > 0";
-                }
-                if (time_value > 600)
-                {
-                    time_error.Text = "Time must be <= 600";
-                }
-            }
-            catch (FormatException ex)
-            {
-                time_error.Text = "Time can't be empty or text";
-            }
+            ValidateInput(waiting_time, time_error, 0.0, 600.0, "Time");
         }
 
         private void TextBox_TextChanged_Waiting_Tariff(object sender, TextChangedEventArgs e)
         {
-            waiting_tariff_error.Text = "";
-            try
-            {
-                double waiting_tariff_value = Double.Parse(waiting_tariff.Text);
-                if (waiting_tariff_value < 0)
-                {
-                    waiting_tariff_error.Text = "Waiting tariff must be >= 0";
-                }
-                if (waiting_tariff_value > 100)
-                {
-                    waiting_tariff_error.Text = "Waiting must be <= 100";
-                }
-            }
-            catch (FormatException ex)
-            {
-                waiting_tariff_error.Text = "Waiting tariff can't be empty or text";
-            }
+            ValidateInput(waiting_tariff, waiting_tariff_error, 0.0, 100.0, "Waiting tariff", false);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -148,6 +69,34 @@ namespace FirstWPFProject
         private void TextBox_TextChanged_Final_Price(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void ValidateInput(TextBox textBox, TextBlock errorBlock, double min, double max, string name, bool AllowZero = true)
+        {
+            errorBlock.Text = "";
+            try
+            {
+                double value = Double.Parse(textBox.Text);
+
+                if (!AllowZero && value <= 0)
+                {
+                    errorBlock.Text = $"{name} must be > {min}";
+                    return;
+                }
+                if (AllowZero && value < min)
+                {
+                    errorBlock.Text = $"{name} must be >= {min}";
+                    return;
+                }
+                if (value > max)
+                {
+                    errorBlock.Text = $"{name} must be <= {max}";
+                }
+            }
+            catch (FormatException)
+            {
+                errorBlock.Text = $"{name} can't be empty or text";
+            }
         }
     }
 }

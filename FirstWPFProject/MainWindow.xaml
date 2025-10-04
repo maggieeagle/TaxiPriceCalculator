@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FirstWPFProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="465" Width="256">
     <Grid>
-        <Rectangle HorizontalAlignment="Left" Height="424" Margin="10,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="222"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="177*"/>
+            <ColumnDefinition Width="64*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle HorizontalAlignment="Left" Height="424" Margin="10,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="222" Grid.ColumnSpan="2"/>
 
         <TextBox Name="distance" HorizontalAlignment="Left" Margin="38,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_Distance"/>
         <TextBox Name="tariff" HorizontalAlignment="Left" Margin="38,128,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_Tariff"/>
@@ -18,17 +22,17 @@
         <Label Content="Tariff (euros per km)" HorizontalAlignment="Left" Margin="38,102,0,0" VerticalAlignment="Top"/>
         <Label Content="Basic price (euros)" HorizontalAlignment="Left" Margin="38,155,0,0" VerticalAlignment="Top"/>
         <Label Content="Waiting time (minutes)" HorizontalAlignment="Left" Margin="38,208,0,0" VerticalAlignment="Top"/>
-        <Label Content="Waiting tariff (euros per min)" HorizontalAlignment="Left" Margin="38,263,0,0" VerticalAlignment="Top"/>
+        <Label Content="Waiting tariff (euros per min)" HorizontalAlignment="Left" Margin="38,263,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Button Content="Calculate" HorizontalAlignment="Left" Margin="94,340,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBox Name="final_price" HorizontalAlignment="Left" Margin="133,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextChanged="TextBox_TextChanged_Final_Price"/>
-        <Label Content="Final price:&#xD;&#xA;" HorizontalAlignment="Left" Margin="55,376,0,0" VerticalAlignment="Top" Height="30"/>
-        <Label Content="Taxi price calculator" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="196" FontSize="20" Margin="22,0,0,0"/>
+        <TextBox Name="final_price" HorizontalAlignment="Left" Margin="133,382,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" TextChanged="TextBox_TextChanged_Final_Price" Grid.ColumnSpan="2"/>
+        <Label Content="Final price:&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,376,0,0" VerticalAlignment="Top" Height="30"/>
+        <Label Content="Taxi price calculator" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="196" FontSize="20" Margin="22,0,0,0" Grid.ColumnSpan="2"/>
         <TextBlock Name="distance_error" HorizontalAlignment="Left" Margin="38,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="10" Width="120" FontSize="8" Foreground="#FFB70C0C"/>
         <TextBlock Name="tariff_error" HorizontalAlignment="Left" Margin="38,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="10" Width="120" FontSize="8" Foreground="#FFB70C0C"/>
         <TextBlock Name="price_error" HorizontalAlignment="Left" Margin="38,197,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="10" Width="120" FontSize="8" Foreground="#FFB70C0C"/>
         <TextBlock Name="time_error" HorizontalAlignment="Left" Margin="38,252,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="10" Width="120" FontSize="8" Foreground="#FFB70C0C"/>
-        <TextBlock Name="waiting_tariff_error" HorizontalAlignment="Left" Margin="38,307,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="10" Width="120" FontSize="8" Foreground="#FFB70C0C"/>
-        <TextBlock Name="form_error" HorizontalAlignment="Left" Margin="61,365,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="10" Width="120" FontSize="8" Foreground="#FFB70C0C"/>
+        <TextBlock Name="waiting_tariff_error" HorizontalAlignment="Left" Margin="38,307,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="10" Width="163" FontSize="8" Foreground="#FFB70C0C" Grid.ColumnSpan="2"/>
+        <TextBlock Name="form_error" HorizontalAlignment="Left" Margin="61,365,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="10" Width="120" FontSize="8" Foreground="#FFB70C0C" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
